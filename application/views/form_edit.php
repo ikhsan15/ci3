@@ -10,14 +10,14 @@
 <h3>form input data</h3>
   <table>
     <form action="<?php echo base_url('Welcome/AksiEdit') ?>" method="post">
-      <!-- <tr>
+      <tr>
         <td>id</td>
         <td>:</td>
         <td>
-          <input type="text"  disabled> 
-          <input type="hidden" name="id">
+          <input type="text" value="<?php echo $data_pgw->id ?>" disabled> 
+          <input type="hidden" name="id" value="<?php echo $data_pgw->id ?>">
         </td>
-      </tr> -->
+      </tr>
       <tr>
         <td>nama</td>
         <td>:</td>
@@ -47,6 +47,11 @@
         <td>email</td>
         <td>:</td>
         <td><input type="text" value="<?php echo $data_pgw->email ?>" name="email"></td>
+      </tr>
+      <tr>
+        <td>foto</td>
+        <td>:</td>
+        <td><input type="text" value="<?php echo $data_pgw->foto ?>" name="foto"></td>
       </tr>
       <tr>
         <td colspan="3"><input type="submit" value="SIMPAN"></td>

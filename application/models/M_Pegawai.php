@@ -21,6 +21,17 @@ class M_pegawai extends CI_Model{
     $query = $this->db->get('data_pribadi');
     return $query->row();
   }
+  public function DeleteDataPgw($id){
+    $this->db->where('id', $id);
+    $this->db->delete('data_pribadi');
+  }
+  public function getPdf($id){    
+    $this->db->select('*');
+    $this->db->from('data_pribadi');
+    $this->db->where('id', $id);
+    $query = $this->db->get();
+    return $query->result();
+  }
 }
 
 

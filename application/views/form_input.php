@@ -46,6 +46,11 @@
         <td><input type="text" name="email"></td>
       </tr>
       <tr>
+        <td>foto</td>
+        <td>:</td>
+        <td><input type="text" name="foto"></td>
+      </tr>
+      <tr>
         <td colspan="3"><input type="submit" value="SIMPAN"></td>
       </tr>
     </form>

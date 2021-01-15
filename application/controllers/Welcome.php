@@ -23,6 +23,8 @@ class Welcome extends CI_Controller {
 		$this->load->view('form_edit', $DATA);
   }
   public function AksiInsert(){
+    // $id = $this->input->post('id');
+    
     $config['upload_path']          = './assets/images/';
     $config['allowed_types']        = 'gif|jpg|png';
     $config['max_size']             = 10000;
@@ -38,6 +40,8 @@ class Welcome extends CI_Controller {
     }
     else
     {
+      // $data = array('upload_data' => $this->upload->data());
+      // $this->load->view('upload_success', $data);
       $foto = $this->upload->data();
       $foto = $foto['file_name'];
       $nama = $this->input->post('nama');
@@ -56,7 +60,6 @@ class Welcome extends CI_Controller {
         'email' => $email,
         'foto' => $foto,
       );
-
       $this->M_Pegawai->InsertDataPgw($DataInsert);
       redirect (base_url('Welcome'));
     }

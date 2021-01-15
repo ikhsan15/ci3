@@ -19,12 +19,11 @@
        <td>foto</td>
     </tr>
     <?php
-    $count = 0;
+    $no = 1;
       foreach($data_pgw as $row){
-        $count = $count + 1;
     ?>
     <tr>
-      <td><?php echo $count ?></td>
+      <td><?php echo $no++ ?></td>
       <!-- <td><?php echo $row->id ?></td> -->
       <td><?php echo $row->nama ?></td>
       <td><?php echo $row->tmp_lahir ?></td>
@@ -32,11 +31,14 @@
       <td><?php echo $row->gender ?></td>
       <td><?php echo $row->no_hp ?></td>
       <td><?php echo $row->email ?></td>
-      <td><?php echo $row->foto ?></td>
+      <td>
+      <!-- <img src="<php echo base_url().'assets/images/'.$row['foto']; ?>" alt=""> -->
+        <?php echo $row->foto ?>
+      </td>
       <td>
          <a href="<?php echo base_url('Welcome/formEdit/').$row->id ?>">Edit</a>
          <a href="<?php echo base_url('Welcome/AksiDelete/').$row->id ?>">Delete</a>
-         <a href="<?php echo base_url('Welcome/PrintPdf/').$row->id ?>">Export PDF</a>
+         <a href="<?php echo base_url('Welcome/PrintPdf/').$row->id ?>" target="blank">Export PDF</a>
       </td>
     </tr>
     <?php

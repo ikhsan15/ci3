@@ -9,12 +9,8 @@
 
 <h3>form input data</h3>
   <table>
-    <form action="<?php echo base_url('Welcome/AksiInsert') ?>" method="post">
-      <!-- <tr>
-        <td>id</td>
-        <td>:</td>
-        <td><input type="text" name="id"></td>
-      </tr> -->
+    <!-- <form action="<php echo base_url('Welcome/AksiInsert') ?>" method="post"> -->
+    <?php echo form_open_multipart('Welcome/AksiInsert'); ?>
       <tr>
         <td>nama</td>
         <td>:</td>
@@ -48,12 +44,13 @@
       <tr>
         <td>foto</td>
         <td>:</td>
-        <td><input type="text" name="foto"></td>
+        <td><input type="file" name="foto" class="form-control" size="20"></td>
       </tr>
       <tr>
         <td colspan="3"><input type="submit" value="SIMPAN"></td>
       </tr>
-    </form>
+    <?php echo form_close(); ?>
+    <!-- </form> -->
   </table>
 </body>
 </html>

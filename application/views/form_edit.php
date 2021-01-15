@@ -51,7 +51,10 @@
       <tr>
         <td>foto</td>
         <td>:</td>
-        <td><input type="text" value="<?php echo $data_pgw->foto ?>" name="foto"></td>
+        <td>
+          <!-- <input type="text" value="<?php echo $data_pgw->foto ?>" name="foto"> -->
+          <img src="<?php echo base_url(); ?>./assets/images/<?php echo $data_pgw->foto; ?>" width="90" height="110" alt="">
+        </td>
       </tr>
       <tr>
         <td colspan="3"><input type="submit" value="SIMPAN"></td>

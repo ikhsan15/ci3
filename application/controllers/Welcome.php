@@ -23,27 +23,43 @@ class Welcome extends CI_Controller {
 		$this->load->view('form_edit', $DATA);
   }
   public function AksiInsert(){
-    // $id = $this->input->post('id');
-    $nama = $this->input->post('nama');
-    $tmp_lahir = $this->input->post('tmp_lahir');
-    $tgl_lahir = $this->input->post('tgl_lahir');
-    $gender = $this->input->post('gender');
-    $no_hp = $this->input->post('no_hp');
-    $email = $this->input->post('email');
-    $foto = $this->input->post('foto');
+    $config['upload_path']          = './assets/images/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    $config['max_size']             = 10000;
+    $config['max_width']            = 10000;
+    $config['max_height']           = 10000;
 
-    $DataInsert = array(
-      'nama' => $nama,
-      'tmp_lahir' => $tmp_lahir,
-      'tgl_lahir' => $tgl_lahir,
-      'gender' => $gender,
-      'no_hp' => $no_hp,
-      'email' => $email,
-      'foto' => $foto,
-    );
+    $this->load->library('upload', $config);
 
-    $this->M_Pegawai->InsertDataPgw($DataInsert);
-    redirect (base_url('Welcome'));
+    if ( ! $this->upload->do_upload('foto'))
+    {
+      echo "gagal upload foto";
+      // print_r($config);
+    }
+    else
+    {
+      $foto = $this->upload->data();
+      $foto = $foto['file_name'];
+      $nama = $this->input->post('nama');
+      $tmp_lahir = $this->input->post('tmp_lahir');
+      $tgl_lahir = $this->input->post('tgl_lahir');
+      $gender = $this->input->post('gender');
+      $no_hp = $this->input->post('no_hp');
+      $email = $this->input->post('email');
+
+      $DataInsert = array(
+        'nama' => $nama,
+        'tmp_lahir' => $tmp_lahir,
+        'tgl_lahir' => $tgl_lahir,
+        'gender' => $gender,
+        'no_hp' => $no_hp,
+        'email' => $email,
+        'foto' => $foto,
+      );
+
+      $this->M_Pegawai->InsertDataPgw($DataInsert);
+      redirect (base_url('Welcome'));
+    }
   }
   public function AksiEdit(){
     $id = $this->input->post('id');
@@ -87,6 +103,7 @@ class Welcome extends CI_Controller {
     $this->dompdf->render();
     $this->dompdf->stream("laporan_pegawai.pdf", array('Attachment' =>0 ));
   }
+  
 
 
 }

@@ -52,15 +52,17 @@
         <td>foto</td>
         <td>:</td>
         <td>
-          <input type="file" name="foto">
+          
           <?php
-            if($data_pgw->foto == NULL){
+            if($data_pgw->foto == !NULL){
           ?>
-          <img src="<?php echo base_url(); ?>./assets/images/pp.jpg" width="90" height="110" alt="">
+            <img src="<?php echo base_url(); ?>./assets/images/<?php echo $data_pgw->foto; ?>" width="90" height="110" alt="">
+            <input type="file" name="foto">
           <?php
             }else{
           ?>
-          <img src="<?php echo base_url(); ?>./assets/images/<?php echo $data_pgw->foto; ?>" width="90" height="110" alt="">
+          <img src="<?php echo base_url(); ?>./assets/images/pp.jpg" width="90" height="110" alt="">
+          <input type="file" name="foto">
             <?php } ?>
         </td>
       </tr>

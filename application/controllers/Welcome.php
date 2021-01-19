@@ -5,7 +5,9 @@ class Welcome extends CI_Controller {
 
   public function __construct(){
     parent::__construct();
+    $this->load->library('Pdf');
     $this->load->model('M_Pegawai');
+    // require_once APPPATH.'third_party/dompdf2/dompdf_config.inc.php';
   }
 
 	public function index(){
@@ -102,11 +104,20 @@ class Welcome extends CI_Controller {
     $orientation = 'landscape';
     $html = $this->output->get_output();
     $this->dompdf->set_paper($paper_size, $orientation);
+    // $this->dompdf->getOptions('isRemoteEnabled', TRUE);
     $this->dompdf->load_html($html);
     $this->dompdf->render();
-    $this->dompdf->stream("laporan_pegawai.pdf", array('Attachment' =>0 ));
+    
+    $this->dompdf->stream("laporan_pegawai.pdf", array('Attachment' => false ));
   }
+  // public function PrintPdf($id){
+  //   $recordPgw = $this->M_Pegawai->getPdf($id);
+  //   $DATA = array('data_pgw' => $recordPgw);
+  //   $this->load->view('laporan_tcpdf', $DATA);
+  // }
   
+
+
 
 
 }

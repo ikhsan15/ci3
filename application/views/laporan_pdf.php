@@ -6,7 +6,7 @@
      <title>Document</title>
  </head>
  <body>
-  <table>
+  <table border="0.5" cellspacing="" cellpadding="3">
     <tr>
       <!-- <th>NO</th> -->
       <th>NAMA</th>
@@ -31,7 +31,10 @@
       <td><?php echo $row->gender ?></td>
       <td><?php echo $row->no_hp ?></td>
       <td><?php echo $row->email ?></td>
-      <td><?php echo $row->foto ?></td>
+      <!-- <td><?php echo $row->foto ?></td> -->
+      <td>
+      <img src="<?php echo base_url(); ?>./assets/images/<?php echo $row->foto; ?>" width="90" height="110" alt="">
+      </td>
     </tr>
     <?php
       }

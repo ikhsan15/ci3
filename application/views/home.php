@@ -33,12 +33,13 @@
       <td><?php echo $row->email ?></td>
       <td>
       <!-- <img src="<php echo base_url().'assets/images/'.$row['foto']; ?>" alt=""> -->
-        <?php echo $row->foto ?>
+        <!-- <?php echo $row->foto ?> -->
       </td>
+      <td width="20%"><img src='.base_url().assets/images/.$row->foto'></td>
       <td>
          <a href="<?php echo base_url('Welcome/formEdit/').$row->id ?>">Edit</a>
          <a href="<?php echo base_url('Welcome/AksiDelete/').$row->id ?>">Delete</a>
-         <a href="<?php echo base_url('Welcome/PrintPdf/').$row->id ?>" target="blank">Export PDF</a>
+         <a href="<?php echo base_url('Welcome/export_tcpdf/').$row->id ?>" target="blank">Export PDF</a>
       </td>
     </tr>
     <?php

@@ -7,6 +7,7 @@ class Welcome extends CI_Controller {
     parent::__construct();
     $this->load->library('Pdf');
     $this->load->model('M_Pegawai');
+    
     // require_once APPPATH.'third_party/dompdf2/dompdf_config.inc.php';
   }
 
@@ -94,12 +95,20 @@ class Welcome extends CI_Controller {
   }
   
   public function PrintPdf($id){
+    
     $this->load->library('dompdf_gen');
 
+    // if ( !$this->get_option("enable_remote") && ($this->_protocol != "" && $this->_protocol !== "file://" ) ) {
+    //   throw new DOMPDF_Exception("Remote file requested, but DOMPDF_ENABLE_REMOTE is false.");
+    // }
+    $_options = array(
+    "enable_remote" => DOMPDF_ENABLE_REMOTE,
+    );
     $recordPgw = $this->M_Pegawai->getPdf($id);
     $DATA = array('data_pgw' => $recordPgw);
 
     $this->load->view('laporan_pdf', $DATA);
+    $this->dompdf->set_option('isRemoteEnabled', true);
     $paper_size = 'A4';
     $orientation = 'landscape';
     $html = $this->output->get_output();
@@ -110,13 +119,19 @@ class Welcome extends CI_Controller {
     
     $this->dompdf->stream("laporan_pegawai.pdf", array('Attachment' => false ));
   }
-  // public function PrintPdf($id){
-  //   $recordPgw = $this->M_Pegawai->getPdf($id);
-  //   $DATA = array('data_pgw' => $recordPgw);
-  //   $this->load->view('laporan_tcpdf', $DATA);
-  // }
+        // $this->output->get_output();
+        // $this->load->library('pdf');
+        // $this->dompdf->loadHtml($html);
+        // $this->dompdf->set_option('isRemoteEnabled', true);
+        // $this->dompdf->setPaper('A4', 'portrait');
+        // $this->dompdf->render();
+        // $this->dompdf->stream("studentidcard.pdf", array("Attachment"=>0));
   
-
+  public function export_tcpdf($id){
+    $data['data_pribadi'] = $this->M_Pegawai->getPdf($id);
+		$this->load->view('laporan_tcpdf', $data);
+  }
+  
 
 
 

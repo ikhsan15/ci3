@@ -7,6 +7,3 @@ class Pdf extends TCPDF
         parent::__construct();
     }
 }
-/*Author:Tutsway.com */  
-/* End of file Pdf.php */
-/* Location: ./application/libraries/Pdf.php */

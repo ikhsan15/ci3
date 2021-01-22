@@ -131,7 +131,6 @@ class Welcome extends CI_Controller {
     $data['data_pribadi'] = $this->M_Pegawai->getPdf($id);
 		$this->load->view('laporan_tcpdf', $data);
   }
-  // tes
   
 
 

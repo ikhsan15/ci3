@@ -36,8 +36,7 @@ class Welcome extends CI_Controller {
 
     $this->load->library('upload', $config);
 
-    if ($this->upload->do_upload('foto'))
-    {
+    if ($this->upload->do_upload('foto')){
       // $data = array('upload_data' => $this->upload->data());
       // $this->load->view('upload_success', $data);
       $foto = $this->upload->data();
@@ -61,8 +60,7 @@ class Welcome extends CI_Controller {
       $this->M_Pegawai->InsertDataPgw($DataInsert);
       redirect (base_url('Welcome'));
     }
-    else
-    {
+    else{
       $DataInsert = array(
         'nama' => $nama,
         'tmp_lahir' => $tmp_lahir,
@@ -92,14 +90,7 @@ class Welcome extends CI_Controller {
       'no_hp' => $no_hp,
       'foto' => $foto,
     );
-    if($foto != null){
-      $DataUpdate = array(
-        'foto' => $foto,
-      );
-    }else{
-      // 'foto' => $this->input->post('foto')
-      $foto = base_url(assets/images/$data_pgw->foto);
-    }
+
     $this->M_Pegawai->EditDataPgw($DataUpdate, $id);
     redirect (base_url());
   }

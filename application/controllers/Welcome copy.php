@@ -98,6 +98,28 @@ class Welcome extends CI_Controller {
     $this->M_Pegawai->EditDataPgw($DataUpdate, $id);
     redirect (base_url());
   }
+  public function AksiEdit(){
+    $id = $this->input->post('id');
+    
+    $DataUpdate = array(
+      'nama' => $this->input->post('nama'),
+      'tmp_lahir' => $this->input->post('tmp_lahir'),
+      'tgl_lahir' => $this->input->post('tgl_lahir'),
+      'gender' => $this->input->post('gender'),
+      'no_hp' => $this->input->post('no_hp'),
+      'email' => $this->input->post('email'),
+    );
+    if('foto' != null){
+      $DataUpdate = array(
+        'foto' => $this->input->post('foto'),
+      );
+    }else{
+      // 'foto' => $this->input->post('foto')
+      $foto = base_url(assets/images/$data_pgw->foto);
+    }
+    $this->M_Pegawai->EditDataPgw($DataUpdate, $id);
+    redirect (base_url());
+  }
   public function AksiDelete($id){
     $this->M_Pegawai->DeleteDataPgw($id);
     redirect (base_url());

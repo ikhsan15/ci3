@@ -1,6 +1,6 @@
 <?php
   $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-  $pdf->SetTitle('Lamaran');
+  $pdf->SetTitle('test');
   $pdf->SetHeaderMargin(30);
   $pdf->SetTopMargin(20);
   $pdf->setFooterMargin(20);
@@ -28,13 +28,15 @@
         <td width="20%" align="left">'.$row->gender.'</td>
         <td width="20%" align="left">'.$row->no_hp.'</td>
         <td width="20%" align="left">'.$row->email.'</td>
-        <td width="20%"><img src='.base_url('assets/images/'.$row->foto).'></td>
+        <td width="20%"><img src='.base_url('./assets/images/'.$row->foto).'></td>
+        <td width="20%"><img src="'.base_url().'/assets/images/'.$row->foto.'"></td>
+        <td width="20%"><img src="'.base_url('/assets/images/'.$row->foto).'"></td>
         
       </tr>
     </table>
     ';
     // die(print_r($row->foto));
-    
+
   }
 
   $pdf->writeHTML($html, true, false, true, false, '');

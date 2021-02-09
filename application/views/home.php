@@ -31,10 +31,20 @@
       <td><?php echo $row->gender ?></td>
       <td><?php echo $row->no_hp ?></td>
       <td><?php echo $row->email ?></td>
+      <td><?php echo print_r($row->foto) ?></td>
+      <!-- <?php
+        if($row->foto != null){
+      ?>
+        <td>
+          <img src="<?php echo base_url().'assets/images/'.$row->foto; ?>" alt="" width="100" height="120">
+        </td>
+      <?php
+        }else{
+      ?>
       <td>
-      <!-- <img src="<php echo base_url().'assets/images/'.$row['foto']; ?>" alt=""> -->
-        <?php echo $row->foto ?>
-      </td>
+          <img src="<?php echo base_url().'assets/images/inf.jpg'; ?>" alt="" width="100" height="120">
+        </td>
+      <?php } ?> -->
       <!-- <td width="20%"><img src='.base_url().assets/images/.$row->foto'></td> -->
       <td>
          <a href="<?php echo base_url('Welcome/formEdit/').$row->id ?>">Edit</a>

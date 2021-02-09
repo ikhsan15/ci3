@@ -33,38 +33,68 @@ class Welcome extends CI_Controller {
     $config['max_size']             = 10000;
     $config['max_width']            = 10000;
     $config['max_height']           = 10000;
+
     $this->load->library('upload', $config);
 
+    if ($this->upload->do_upload('foto'))
+    {
+      // $data = array('upload_data' => $this->upload->data());
+      // $this->load->view('upload_success', $data);
       $foto = $this->upload->data();
       $foto = $foto['file_name'];
+      $nama = $this->input->post('nama');
+      $tmp_lahir = $this->input->post('tmp_lahir');
+      $tgl_lahir = $this->input->post('tgl_lahir');
+      $gender = $this->input->post('gender');
+      $no_hp = $this->input->post('no_hp');
+      $email = $this->input->post('email');
 
       $DataInsert = array(
-        'nama' => $this->input->post('nama'),
-        'tmp_lahir' => $this->input->post('tmp_lahir'),
-        'tgl_lahir' => $this->input->post('tgl_lahir'),
-        'gender' => $this->input->post('gender'),
-        'no_hp' => $this->input->post('no_hp'),
-        'email' => $this->input->post('email'),
+        'nama' => $nama,
+        'tmp_lahir' => $tmp_lahir,
+        'tgl_lahir' => $tgl_lahir,
+        'gender' => $gender,
+        'no_hp' => $no_hp,
+        'email' => $email,
+        'foto' => $foto,
       );
       $this->M_Pegawai->InsertDataPgw($DataInsert);
       redirect (base_url('Welcome'));
-
+    }
+    else
+    {
+      $DataInsert = array(
+        'nama' => $nama,
+        'tmp_lahir' => $tmp_lahir,
+        'tgl_lahir' => $tgl_lahir,
+        'gender' => $gender,
+        'no_hp' => $no_hp,
+        'email' => $email,
+      );
       // print_r($config);
+    }
   }
   public function AksiEdit(){
     $id = $this->input->post('id');
-    
+    $nama = $this->input->post('nama');
+    $tmp_lahir = $this->input->post('tmp_lahir');
+    $tgl_lahir = $this->input->post('tgl_lahir');
+    $gender = $this->input->post('gender');
+    $no_hp = $this->input->post('no_hp');
+    $email = $this->input->post('email');
+    $foto = $this->input->post('foto');
+
     $DataUpdate = array(
-      'nama' => $this->input->post('nama'),
-      'tmp_lahir' => $this->input->post('tmp_lahir'),
-      'tgl_lahir' => $this->input->post('tgl_lahir'),
-      'gender' => $this->input->post('gender'),
-      'no_hp' => $this->input->post('no_hp'),
-      'email' => $this->input->post('email'),
+      'nama' => $nama,
+      'tmp_lahir' => $tmp_lahir,
+      'tgl_lahir' => $tgl_lahir,
+      'gender' => $gender,
+      'no_hp' => $no_hp,
+      'foto' => $foto,
     );
-    if('foto' != null){
+    if($foto != null){
       $DataUpdate = array(
-        'foto' => $this->input->post('foto'),
+        'foto' => $foto,
       );
     }else{
       // 'foto' => $this->input->post('foto')
@@ -120,3 +150,4 @@ class Welcome extends CI_Controller {
 
 
 }
+ 

@@ -16,7 +16,7 @@
 <body>
 
 <h3>form input data</h3>
-  <table>
+  <table class="table table-bordered" id="tableLoop">
     <!-- <form action="<php echo base_url('Welcome/AksiInsert') ?>" method="post"> -->
     <?php echo form_open_multipart('Welcome/AksiInsert'); ?>
       <tr>
@@ -63,6 +63,7 @@
       <tr>
         <td colspan="3"><input type="submit" value="SIMPAN"></td>
       </tr>
+      
     <?php echo form_close(); ?>
     <!-- </form> -->
   </table>

@@ -20,6 +20,9 @@
     </tr>
     <?php
     $no = 1;
+
+    
+    
       foreach($data_pgw as $row){
     ?>
     <tr>

@@ -41,20 +41,14 @@ class Welcome extends CI_Controller {
       // $this->load->view('upload_success', $data);
       $foto = $this->upload->data();
       $foto = $foto['file_name'];
-      $nama = $this->input->post('nama');
-      $tmp_lahir = $this->input->post('tmp_lahir');
-      $tgl_lahir = $this->input->post('tgl_lahir');
-      $gender = $this->input->post('gender');
-      $no_hp = $this->input->post('no_hp');
-      $email = $this->input->post('email');
 
       $DataInsert = array(
-        'nama' => $nama,
-        'tmp_lahir' => $tmp_lahir,
-        'tgl_lahir' => $tgl_lahir,
-        'gender' => $gender,
-        'no_hp' => $no_hp,
-        'email' => $email,
+        'nama' => $this->input->post('nama'),
+        'tmp_lahir' => $this->input->post('tmp_lahir'),
+        'tgl_lahir' => $this->input->post('tgl_lahir'),
+        'gender' => $this->input->post('gender'),
+        'no_hp' => $this->input->post('no_hp'),
+        'email' => $this->input->post('email'),
         'foto' => $foto,
       );
       $this->M_Pegawai->InsertDataPgw($DataInsert);
@@ -62,12 +56,12 @@ class Welcome extends CI_Controller {
     }
     else{
       $DataInsert = array(
-        'nama' => $nama,
-        'tmp_lahir' => $tmp_lahir,
-        'tgl_lahir' => $tgl_lahir,
-        'gender' => $gender,
-        'no_hp' => $no_hp,
-        'email' => $email,
+        'nama' => $this->input->post('nama'),
+        'tmp_lahir' => $this->input->post('tmp_lahir'),
+        'tgl_lahir' => $this->input->post('tgl_lahir'),
+        'gender' => $this->input->post('gender'),
+        'no_hp' => $this->input->post('no_hp'),
+        'email' => $this->input->post('email'),
       );
       // print_r($config);
     }

@@ -19,6 +19,7 @@
   <table class="table table-bordered" id="tableLoop">
     <!-- <form action="<php echo base_url('Welcome/AksiInsert') ?>" method="post"> -->
     <?php echo form_open_multipart('Welcome/AksiInsert'); ?>
+    <section>
       <tr>
         <td>nama</td>
         <td>:</td>
@@ -34,15 +35,17 @@
         <td>:</td>
         <td><input type="text" name="tgl_lahir" id="tgl_lahir"></td>
       </tr>
+    </section>
+    <section>
       <tr>
         <td>gender</td>
         <td>:</td>
         <td>
-          <input type="text" name="gender">
-          <!-- <select name="gender" id="gender">
-            <option>Pria</option>
-            <option>Wanita</option>
-          </select> -->
+          <!-- <input type="text" name="gender"> -->
+          <select name="gender" id="gender">
+            <option value="pria">Pria</option>
+            <option value="wanita">Wanita</option>
+          </select>
         </td>
       </tr>
       <tr>
@@ -63,7 +66,7 @@
       <tr>
         <td colspan="3"><input type="submit" value="SIMPAN"></td>
       </tr>
-      
+    </section>
     <?php echo form_close(); ?>
     <!-- </form> -->
   </table>

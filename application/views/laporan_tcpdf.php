@@ -28,15 +28,13 @@
         <td width="20%" align="left">'.$row->gender.'</td>
         <td width="20%" align="left">'.$row->no_hp.'</td>
         <td width="20%" align="left">'.$row->email.'</td>
-        <td width="20%"><img src='.base_url('./assets/images/'.$row->foto).'></td>
-        <td width="20%"><img src="'.base_url().'/assets/images/'.$row->foto.'"></td>
         <td width="20%"><img src="'.base_url('/assets/images/'.$row->foto).'"></td>
         
       </tr>
     </table>
     ';
     // die(print_r($row->foto));
-
+    // <td width="20%"><img src="'.base_url().'/assets/images/'.$row->foto.'"></td>
   }
 
   $pdf->writeHTML($html, true, false, true, false, '');

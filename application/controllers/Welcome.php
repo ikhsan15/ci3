@@ -35,17 +35,20 @@ class Welcome extends CI_Controller {
     $config['max_height']           = 10000;
 
     $this->load->library('upload', $config);
+    $u_foto = $this->upload->do_upload('foto');
 
-    if ($this->upload->do_upload('foto')){
+    if (isset($u_foto)){
       // $data = array('upload_data' => $this->upload->data());
       // $this->load->view('upload_success', $data);
       $foto = $this->upload->data();
       $foto = $foto['file_name'];
+      $tgl_lahir = $this->input->post('tgl_lahir');
 
       $DataInsert = array(
         'nama' => $this->input->post('nama'),
         'tmp_lahir' => $this->input->post('tmp_lahir'),
-        'tgl_lahir' => $this->input->post('tgl_lahir'),
+        // 'tgl_lahir' => $this->input->post('tgl_lahir'),
+        'tgl_lahir' => (!empty($tgl_lahir)) ? $tgl_lahir : NULL,
         'gender' => $this->input->post('gender'),
         'no_hp' => $this->input->post('no_hp'),
         'email' => $this->input->post('email'),

@@ -61,7 +61,7 @@
       <tr>
         <td>foto</td>
         <td>:</td>
-        <td><input type="file" name="foto" class="form-control" size="20"></td>
+        <td><input type="file" id="foto" name="foto" class="form-control" size="20" accept=".png, .jpg, .jpeg"></td>
       </tr>
       <tr>
         <td colspan="3"><input type="submit" value="SIMPAN"></td>
@@ -83,5 +83,13 @@
       yearRange: '1900:+0',
     });
   });
+
+  var uploadField = document.getElementById("foto");
+  uploadField.onchange = function() {
+    if(this.files[0].size > 3145728){
+      alert("File maximum adalah 2MB!");
+      this.value = "";
+    };
+  };
 
 </script>

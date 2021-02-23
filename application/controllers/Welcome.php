@@ -55,7 +55,9 @@ class Welcome extends CI_Controller {
         'foto' => $foto,
       );
       $this->M_Pegawai->InsertDataPgw($DataInsert);
-      redirect (base_url('Welcome'));
+      // redirect (base_url('Welcome'));
+      // echo base_url('send_email/');
+      $this->load->view('sendemail');
     }
     else{
       $DataInsert = array(
@@ -133,7 +135,6 @@ class Welcome extends CI_Controller {
     $data['data_pribadi'] = $this->M_Pegawai->getPdf($id);
 		$this->load->view('laporan_tcpdf', $data);
   }
-  
 
 
 
